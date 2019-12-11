@@ -16,6 +16,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Identity;
 using System.IO;
+using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.EntityFrameworkCore;
 using EventManagement.Core.Model;
@@ -72,7 +73,12 @@ namespace EventManagement
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            app.UseCors(x => {
+                x.AllowAnyOrigin()
+             .AllowAnyMethod()
+             .AllowAnyHeader();
+            });
+            //app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
             app.UseAuthentication();
