@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import EventService, {getEvents} from '../services/eventService'
 import { Calender } from './Calender';
+import { getDaysInMonth } from '../utils/calender';
+import { isArray } from 'util';
 
 
 export class CalenderPage extends Component {
@@ -11,15 +13,18 @@ export class CalenderPage extends Component {
     }
 
     async componentDidMount() {
-        //make api call
+        const days = getDaysInMonth();
+        console.log(days[0].getDate())
+        //make api call,
+        //TODO, get all events within the days
         const result = await getEvents(1,"");
-        this.setState({eventsData:result, loading: false})
+        this.setState({eventsData:result, days:days, loading: false})
     }
 
-    static renderCalender(eventsData) {
+    static renderCalender(eventsData, days) {
         return (
             <div> 
-                <Calender eventsData={eventsData} />
+                <Calender eventsData={eventsData} days={days} />
             </div>
             );
     }
@@ -27,7 +32,7 @@ export class CalenderPage extends Component {
     render() {
         let contents = this.state.loading
         ? <p><em>Loading...</em></p>
-        : CalenderPage.renderCalender(this.state.eventsData)
+        : CalenderPage.renderCalender(this.state.eventsData, this.state.days)
         return (
             <div>
                 {contents}      

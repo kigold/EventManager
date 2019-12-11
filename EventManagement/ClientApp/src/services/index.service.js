@@ -15,8 +15,9 @@ export default instance;
 
 export const handleResponse = (payload) => {
   try {
-    console.log('handling response')
-        if(payload.data.code == 1){
+        console.log('handling response')
+        //TODO, Handle 401, 400 amd 500
+        if(payload.status == 200 && payload.data.code == 1){
           //Success
           console.log(payload)
           return payload.data.payload

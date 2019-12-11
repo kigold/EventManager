@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {formatDate} from '../util/dateTimeLib';
+import {formatDate} from '../utils/dateTimeLib';
 
 export class Day extends Component {
 
@@ -9,8 +9,6 @@ export class Day extends Component {
     }
 
     componentDidMount() {
-        console.log("inside Day")
-        console.log(this.props)
         this.setState({eventsData:this.props.eventsData, loading: false})
     }
 
@@ -34,7 +32,7 @@ export class Day extends Component {
 
         return (
             <div>
-                <h4>Events for today</h4>
+                <h4>Events for today {this.props.day.getDate()}</h4>
                 <div>{contents}</div>
             </div>
         )
