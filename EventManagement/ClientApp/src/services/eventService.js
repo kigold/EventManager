@@ -5,14 +5,14 @@ import { addTokenToHeader } from "../utils";
 const { pageSize } = config;
 
 export default class EventService {
-    static getEvents1(pageNumber, keyword) {
+    static getEvents(pageNumber, keyword, month) {
       return axios.get(
-        `/events?pageNumber=${pageNumber}&pageSize=${pageSize}&keyword=${keyword}`
+          `/events?pageNumber=${pageNumber}&pageSize=${pageSize}&keyword=${keyword}&month=${month}`
       );
     }
 
-    static getEvent(keyword) {
-        return axios.get(`/events/${keyword}`);
+    static getEvent(id) {
+        return axios.get(`/events/${id}`);
     }
 
     static createEvent(payload) {
@@ -24,11 +24,11 @@ export default class EventService {
     }
 
 }
-export const getEvents = async (pageNumber, keyword) => {
+export const queryEvents = async (pageNumber, keyword, month) => {
   //addTokenToHeader();
   try {
        console.log("making api call")
-      const events = await EventService.getEvents1(pageNumber, keyword)
+      const events = await EventService.getEvents(pageNumber, keyword, month)
       return handleResponse(events);
   } catch (error) {
     displayError(error);

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {formatDate} from '../utils/dateTimeLib';
+import { formatDate } from '../utils/dateTimeLib';
+import { dayOfTheWeek } from '../statics/daysOfTheWeek';
 
 export class Day extends Component {
 
@@ -12,28 +13,35 @@ export class Day extends Component {
         this.setState({eventsData:this.props.eventsData, loading: false})
     }
 
-    static renderDaysEvent (eventsData) {
+    static renderDaysEvent(eventsData, day) {
+        console.log("day", day, eventsData.length);
         return (
-            <ul>
-                {eventsData.map(eventData =>
-                    <li key={eventData.id}>
-                         {eventData.title} 
-                        <div>{formatDate(eventData.startDate)}</div>
-                    </li>
-                )}
-            </ul>
+            eventsData.length < 1
+                ?
+            <div>
+                <h6>No Events for today {day.getDate()}</h6>
+            </div>
+                :            
+            <div>
+                <ul>
+                    {eventsData.map(eventData =>
+                        <li key={eventData.id}>                              
+                            <div className="event"> {eventData.title} {formatDate(eventData.startDate)}</div>
+                        </li>
+                    )}
+                </ul>
+            </div>
         );
     }
 
     render () {
         let contents = this.state.loading
             ? <p><em>Loading...</em></p>
-            : Day.renderDaysEvent(this.props.eventsData);
+            : Day.renderDaysEvent(this.props.eventsData, this.props.day);
 
         return (
-            <div>
-                <h4>Events for today {this.props.day.getDate()}</h4>
-                <div>{contents}</div>
+            <div className={'grid-item day ' + dayOfTheWeek(this.props.day.getDay())}>
+                {contents}
             </div>
         )
     }

@@ -28,7 +28,7 @@ export const decodeUser = (token = savedtoken) => {
 export const addTokenToHeader = () => {
   try {
     const token = localStorage.getItem("token");
-    if (token != "" || token == undefined) {
+    if (token !== "" || token === undefined) {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     } else {
       //TODO redirect to Login page if necessary

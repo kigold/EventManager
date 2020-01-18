@@ -1,0 +1,63 @@
+﻿body {
+}
+
+.day {
+    /*width: 50px;*/
+    background: rgb(233, 152, 229);
+    box-shadow: 2px 1px 3px grey;
+    /*margin*/
+    /*margin-bottom: 5px;*/
+    /*padding*/
+    padding: 5px;
+    /*radius*/
+    border-radius: 10px 0px 10px 0px;
+}
+
+.grid-container {
+    display: grid;
+    /*grid-template-rows: 40px;*/
+    grid-template-columns: repeat(7, 1fr);
+    grid-auto-rows: 100px;
+    /*grid-template-columns: minmax(100px, auto);*/
+    grid-row-gap: 5px;
+    grid-column-gap: .75rem;
+}
+
+.sunday {
+    background: rgb(255, 91, 91);
+    grid-column-start: 1;
+}
+
+.monday {
+    background: rgb(91, 148, 255);
+    grid-column-start: 2;
+}
+
+.tuesday {
+    background: rgb(176, 91, 255);
+    grid-column-start: 3;
+}
+
+.wednesday {
+    background: rgb(222, 91, 255);
+    grid-column-start: 4;
+}
+
+.thursday {
+    background: rgb(97, 255, 91);
+    grid-column-start: 5;
+}
+
+.friday {
+    background: rgb(219, 255, 91);
+    grid-column-start: 6;
+}
+
+.saturday {
+    background: rgb(255, 91, 187);
+    grid-column-start: 7;
+}
+
+.event{
+    font-size:7px;
+}

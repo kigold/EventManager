@@ -111,7 +111,7 @@ namespace EventManagement.Core.Services
             return new ResponseViewModel(_validations);
         }
 
-        public ResponseViewModel<IEnumerable<EventsViewModel>> GetAllEvents(BaseQueryViewModel modeld)
+        public ResponseViewModel<IEnumerable<EventsViewModel>> GetAllEvents()
         {
             var query = _context.Events.AsQueryable();
             var result = query.ToList();
@@ -128,7 +128,7 @@ namespace EventManagement.Core.Services
                 result);
         }
 
-        public ResponseViewModel<IEnumerable<EventsViewModel>> GetEvents(BaseQueryViewModel query)
+        public ResponseViewModel<IEnumerable<EventsViewModel>> GetEvents(EventQueryModel query)
         {
             int page = (query.PageIndex == null || query.PageIndex < 1) ? 1 : query.PageIndex.Value;
             int pageSize = (query.PageSize == null || query.PageSize < 1) ? 10 : query.PageSize.Value;
@@ -138,6 +138,10 @@ namespace EventManagement.Core.Services
             if (!string.IsNullOrEmpty(query.Keyword))
                 result = result.Where(x => x.Title.ToLower().Contains(query.Keyword) 
                     || x.Description.ToLower().Contains(query.Keyword));
+            if (query.Month > 0)
+                result = result.Where(x => x.DateCreated.Month == query.Month);
+
+            var t = result.FirstOrDefault()?.DateCreated.Month;
 
             var totalCount = result.Count();
 

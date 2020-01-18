@@ -41,7 +41,7 @@ namespace EventManagement.Controllers
         [HttpGet()]
         [AllowAnonymous]
         [ProducesResponseType(typeof(IEnumerable<EventsViewModel>), 200)]
-        public IActionResult Gets([FromQuery]BaseQueryViewModel query)
+        public IActionResult Gets([FromQuery]EventQueryModel query)
         {
             try
             {
@@ -59,7 +59,7 @@ namespace EventManagement.Controllers
         [HttpPost()]
         [AllowAnonymous]
         [ProducesResponseType(typeof(EventsViewModel), 200)]
-        public IActionResult Gets(EventsViewModel model)
+        public IActionResult Event(EventsViewModel model)
         {
             try
             {

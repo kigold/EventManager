@@ -4,7 +4,7 @@ using System.Text;
 
 namespace EventManagement.Core.ViewModel
 {
-    public class BaseQueryViewModel
+    public class BaseQueryModel
     {
         public int? PageSize { get; set; }
         public int? PageIndex { get; set; }

@@ -20,8 +20,8 @@ export const compareDate = (a, b) => {
       console.log("dateA2", dateA)
       console.log("dateB2", dateB)
 
-      console.log("result", dateA.getTime() == dateB.getTime());
-      return dateA.getTime() == dateB.getTime();
+      console.log("result", dateA.getTime() === dateB.getTime());
+      return dateA.getTime() === dateB.getTime();
   } catch (error) {
     return "invalid date"
   }

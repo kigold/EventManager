@@ -14,6 +14,13 @@ namespace EventManagement.Core.Context
         {
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            // add your own configuration here
+            modelBuilder.ApplyConfiguration(new EventMap());
+        }
+
         public DbSet<Event> Events { get; set; }
     }
 }

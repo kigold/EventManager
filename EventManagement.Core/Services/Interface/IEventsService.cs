@@ -7,8 +7,8 @@ namespace EventManagement.Core.Services.Interface
 {
     public interface IEventsService
     {
-        ResponseViewModel<IEnumerable<EventsViewModel>> GetEvents(BaseQueryViewModel query);
-        ResponseViewModel<IEnumerable<EventsViewModel>> GetAllEvents(BaseQueryViewModel query);
+        ResponseViewModel<IEnumerable<EventsViewModel>> GetEvents(EventQueryModel query);
+        ResponseViewModel<IEnumerable<EventsViewModel>> GetAllEvents();
         ResponseViewModel<EventsViewModel> GetEvent(int id);
         ResponseViewModel AddEvent(EventsViewModel model);
         ResponseViewModel EditEvent(EventsViewModel model);

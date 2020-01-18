@@ -19,15 +19,13 @@ export class Calender extends Component {
 
     static renderCalender(eventsData, days) {
         return (
-            <div>
-            <ul>
+            <div className="grid-container">
+            
                 {days.map(day =>  
-                    <li key={day.getDate()}>
-                        <Day eventsData={eventsData.filter(x => compareDate(x.startDate, day))} day={day}/>
-                         {day.getDate()} 
-                    </li>
+                    
+                    <Day key={day.getDate()} eventsData={eventsData.filter(x => compareDate(x.startDate, day))} day={day}/>   
                 )}
-            </ul>
+            
             </div>
             );
     }
