@@ -140,8 +140,8 @@ namespace EventManagement.Core.Services
                     || x.Description.ToLower().Contains(query.Keyword));
             if (query.Month > 0)
                 result = result.Where(x => x.DateCreated.Month == query.Month);
-
-            var t = result.FirstOrDefault()?.DateCreated.Month;
+            if (query.Year > 0)
+                result = result.Where(x => x.DateCreated.Year == query.Year);
 
             var totalCount = result.Count();
 

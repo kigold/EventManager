@@ -1,8 +1,8 @@
 export const getDaysInMonth = (month, year) => {
     try{
       const today = new Date();
-      month = month === undefined ? today.getMonth() : month;
-      year = year === undefined ? today.getFullYear() : year;
+        month = month === undefined || month === null ? today.getMonth() : month;
+        year = year === undefined || year === null ? today.getFullYear() : year;
       console.log(month, year);
       let date = new Date(Date.UTC(year, month, 1));
       let days = [];

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { formatDate } from '../utils/dateTimeLib';
-import { dayOfTheWeek } from '../statics/daysOfTheWeek';
+import { dayOfTheWeek } from '../statics/dates';
 
 export class Day extends Component {
 
@@ -14,7 +14,6 @@ export class Day extends Component {
     }
 
     static renderDaysEvent(eventsData, day) {
-        console.log("day", day, eventsData.length);
         return (
             eventsData.length < 1
                 ?
